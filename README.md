@@ -696,3 +696,210 @@ Try-Catch-Finally: Combines exception handling and cleanup tasks in one block of
 Nested Try-Catch: Used when different parts of code may throw different types of exceptions, and you want to handle them separately.
 
 Chained Exceptions: Used to associate one exception with another, providing more context about the error.
+
+** Module 3: Java 103 - Intermediate Java**
+
+Streams and Lambda Expressions: 
+Streams
+Definition: A Stream in Java represents a sequence of elements supporting sequential and parallel aggregate operations. Streams are not data structures; they do not store elements. Instead, they convey data from a source through a pipeline of computational operations.
+
+Stream Operations:
+
+Intermediate Operations: Transform a stream into another stream. Examples include filter(), map(), and sorted(). These operations are lazy; they are not executed until a terminal operation is invoked.
+Terminal Operations: Produce a result or a side-effect, and after this, the stream is considered consumed and no longer usable. Examples include collect(), forEach(), and reduce().
+Pipeline: A sequence of stream operations chained together. It typically starts with a source, followed by intermediate operations, and ends with a terminal operation.
+
+Sources for Streams: Collections (like List, Set), arrays, I/O channels, or any data source.
+
+Advantages of Streams:
+
+Conciseness: Allows for more readable and compact code.
+Parallelism: Simplifies writing parallel code. Streams can be easily switched to parallel mode with parallelStream().
+Pipelining: Intermediate operations are optimized via lazy evaluation, which can improve performance.
+Examples of Common Stream Operations:
+
+Filter: Excludes elements based on a condition.
+Map: Transforms each element into another object.
+Sorted: Orders the elements based on a comparator.
+Collect: Accumulates the elements into a collection or another data structure.
+Lambda Expressions
+Definition: Lambda expressions are a feature in Java that provide a clear and concise way to represent one method interface using an expression. They are essentially a shorthand notation for implementing functional interfaces.
+
+Syntax: (parameters) -> expression or (parameters) -> { statements; }
+
+Example: (int x, int y) -> x + y
+Functional Interfaces: An interface with only one abstract method. Examples include Runnable, Callable, Comparator, and custom interfaces annotated with @FunctionalInterface.
+
+Key Features of Lambda Expressions:
+
+Simplification: Reduces boilerplate code, making code more readable and concise.
+Anonymous: Lambda expressions are anonymous, meaning they do not have a name and can be implemented on-the-fly.
+Capturing Variables: Lambdas can capture (access) both final or effectively final variables from the enclosing scope.
+Common Use Cases:
+
+Collections: Sorting, filtering, and mapping using stream operations.
+Concurrency: Simplifying the creation of threads and tasks.
+Event Handling: Defining event handlers in GUI applications.
+Differences from Anonymous Classes:
+
+Syntax: Much more concise than anonymous inner classes.
+Scoping: Lambdas do not have a this reference and cannot shadow variables from the enclosing scope.
+Interplay between Streams and Lambda Expressions
+Functional Programming: Streams and lambda expressions together facilitate a functional programming style in Java, emphasizing immutability and side-effect-free functions.
+Readability and Maintainability: They improve code readability and maintainability by providing a declarative approach to complex data processing tasks.
+Parallelism: Simplify writing concurrent code by abstracting thread management.
+
+Streams API and Handling Data Sets
+Streams API
+Definition: A Stream is a sequence of elements supporting sequential and parallel aggregate operations.
+Streams in Java are part of the java.util.stream package.
+Characteristics:
+
+Pipelining: Stream operations are combined into a pipeline.
+Internal Iteration: Streams perform iterations internally, in contrast to the external iteration using loops.
+Functional: Operates on elements using lambda expressions or method references.
+Stream Operations:
+
+Intermediate Operations: Transform a stream into another stream. Examples: filter(), map(), sorted().
+Lazy Evaluation: Intermediate operations are lazy; they are not executed until a terminal operation is invoked.
+Terminal Operations: Produce a result or a side-effect. Examples: collect(), forEach(), reduce().
+Eager Evaluation: Terminal operations trigger the processing of the stream pipeline.
+Common Intermediate Operations:
+
+filter(Predicate): Filters elements based on a condition.
+map(Function): Transforms elements by applying a function.
+flatMap(Function): Flattens nested structures, like streams of lists.
+distinct(): Removes duplicate elements.
+sorted(Comparator): Sorts elements based on a comparator.
+Common Terminal Operations:
+
+collect(Collector): Converts the stream into a collection or other data structure.
+forEach(Consumer): Performs an action for each element.
+reduce(BinaryOperator): Combines elements to produce a single result.
+count(): Counts the number of elements.
+anyMatch/noneMatch/allMatch(Predicate): Checks conditions on elements.
+Parallel Streams:
+
+Use parallelStream() for parallel processing.
+Enables concurrent execution, leveraging multi-core architectures.
+Usage Scenarios:
+
+Bulk data operations on collections.
+Processing large data sets efficiently.
+Functional programming with streams for clean and readable code.
+Handling Data Sets
+Data Set Definition:
+
+A data set is a collection of data, often structured in a tabular form with rows and columns.
+Characteristics:
+
+Volume: The size of the data set.
+Variety: The nature of the data (structured, semi-structured, unstructured).
+Velocity: The speed at which data is generated and processed.
+Data Handling Operations:
+
+Loading: Importing data from various sources (databases, files, APIs).
+Cleaning: Removing or correcting errors, handling missing values.
+Transforming: Changing the data format or structure to suit analysis needs.
+Storing: Saving the data in appropriate storage systems (databases, data warehouses).
+Data Processing Techniques:
+
+Batch Processing: Handling data in large blocks.
+Real-Time Processing: Processing data as it arrives.
+ETL (Extract, Transform, Load): Extracting data from sources, transforming it, and loading it into a storage system.
+Data Analysis Tools:
+
+Statistical Tools: For descriptive and inferential statistics.
+Machine Learning: For predictive modeling and data mining.
+Visualization Tools: For graphical representation of data insights (charts, graphs).
+Best Practices:
+
+Ensure Data Quality: Regularly clean and validate data.
+Use Efficient Storage Solutions: Choose the right database or file system based on data characteristics.
+Maintain Data Security: Protect sensitive information through encryption and access controls.
+Document Data Sources and Transformations: Maintain clear documentation for reproducibility and transparency.
+Optimize Performance: Use indexing, caching, and parallel processing to improve data handling efficiency.
+
+Generics and Collections in Java
+Generics
+Definition and Purpose
+
+Generics allow for the definition of classes, interfaces, and methods with placeholder types.
+They enable code reusability and type safety without the need for casting.
+Generics can be used to define a single type or multiple types.
+Benefits of Generics
+
+Type Safety: Ensures that only a specific type of object is allowed, reducing runtime errors.
+Elimination of Casts: Reduces the need for explicit casting, making the code cleaner.
+Reusability: Enables the creation of generic algorithms that work with any object type.
+Syntax
+
+Generic Class: class ClassName<T> { /* ... */ }
+Generic Method: <T> ReturnType methodName(Parameters) { /* ... */ }
+Bounded Types: class ClassName<T extends Bound> { /* ... */ }
+Example: <T extends Number>, allowing only types that are subclasses of Number.
+Common Generic Types
+
+T - Type
+E - Element
+K - Key
+V - Value
+N - Number
+Wildcard Types
+
+Unbounded Wildcard: <?> - any type
+Bounded Wildcards:
+<? extends T> - any type that is a subclass of T
+<? super T> - any type that is a superclass of T
+Type Erasure
+
+The process by which the Java compiler removes all type information during compilation.
+Ensures backward compatibility with older versions of Java that do not support generics.
+Collections
+Definition and Purpose
+
+Collections are data structures that store groups of objects.
+Java provides the java.util package, which contains various collection classes and interfaces.
+Collection Interfaces
+
+Collection: The root interface for all collection types.
+List: Ordered collection (sequence) that allows duplicate elements.
+Implementations: ArrayList, LinkedList, Vector
+Set: Collection that does not allow duplicate elements.
+Implementations: HashSet, LinkedHashSet, TreeSet
+Queue: Collection designed for holding elements prior to processing.
+Implementations: LinkedList, PriorityQueue
+Map: Collection of key-value pairs.
+Implementations: HashMap, TreeMap, LinkedHashMap
+Common Collection Methods
+
+add(E element): Adds an element to the collection.
+remove(Object o): Removes a single instance of the specified element.
+size(): Returns the number of elements in the collection.
+contains(Object o): Returns true if the collection contains the specified element.
+isEmpty(): Returns true if the collection contains no elements.
+clear(): Removes all elements from the collection.
+Iterating Collections
+
+For-each Loop: Simplified loop for iterating over collections.
+Iterator Interface: Provides methods for traversing elements.
+hasNext(): Returns true if the iteration has more elements.
+next(): Returns the next element in the iteration.
+remove(): Removes the last element returned by the iterator.
+Comparable and Comparator
+
+Comparable: Interface to define natural ordering of objects.
+Method: compareTo(T o)
+Comparator: Interface to define custom ordering of objects.
+Methods: compare(T o1, T o2), reversed(), thenComparing()
+Synchronizing Collections
+
+Use synchronized wrappers provided by the Collections class to make collections thread-safe.
+Examples: Collections.synchronizedList(new ArrayList<>());
+Unmodifiable Collections
+
+Use unmodifiable wrappers to create read-only collections.
+Examples: Collections.unmodifiableList(new ArrayList<>());
+Common Collection Algorithms
+Sorting, searching, shuffling, reversing, etc., using utility methods from the Collections class.
+
